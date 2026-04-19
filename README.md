@@ -1,82 +1,89 @@
-## Визуализатор алгоритмов поиска пути
-### Описание:
+# Pathfinding Algorithm Visualizer
 
-Визуализатор поиска пути с ипользованием различных алгоритмов 
+[![Python 3.14+](https://img.shields.io/badge/python-3.14+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-Проект создан в рамках знакомства с пакетом [`Matplotlib`](https://pypi.org/project/matplotlib/) и различными методами поиска пути. Поэтому реализован без использования других библиотек
+Interactive visualization of classic pathfinding algorithms – **Wave (Lee)** and **A\*** – built with **Matplotlib**.  
+This project was created to explore the `matplotlib` library and compare different maze‑solving techniques.  
+It includes a **randomized maze generator** and a clean GUI to set start/end points, change maze dimensions, and watch the algorithms in action.
 
-Реализован алгоритм генерации лабиринтов
+## Features
 
-Реализованы следующие методы поиска пути:
+- Random maze generation (recursive backtracker)
+- Two pathfinding algorithms:
+  - [Wave (Lee) algorithm](https://en.wikipedia.org/wiki/Lee_algorithm)
+  - [A\* algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)
+- Interactive GUI built with `matplotlib`:
+  - Set start (green) and end (blue) points
+  - Adjust maze rows/columns
+  - Clear map or regenerate a new one
+- Fully typed code with strict static type checking
 
-- [Волновой алгоритм](https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%9B%D0%B8)
-- [Алгоритм А*](https://ru.wikipedia.org/wiki/A*) (функция - расстояние до точки)
+## Technologies
 
+- **Core**: Python 3.14+, Matplotlib
+- **Code quality**:
+  - `ruff` – linting, formatting, import sorting
+  - `mypy`, `ty` – static type checking
 
-### Как запустить проект:
+## Getting Started
 
-Клонируйте репозиторий:
-```commandline
+### Prerequisites
+
+- `python 3.14` or higher
+- `git`
+- `uv`
+- `make`
+
+### Installation
+
+Clone the repository:
+
+```bash
 git clone git@github.com:Starkiller2000Turbo/pathfinding.git
-```
-
-Измените свою текущую рабочую дерикторию:
-```commandline
 cd pathfinding
 ```
 
-Создайте и активируйте виртуальное окружение
+Install dependencies and create virtual environment:
 
-```commandline
-python -m venv venv
-source venv/Scripts/activate
-```
-
-Обновите pip и установите зависимости из requirements.txt:
-```commandline
+```bash
 make req
 ```
 
-### Запустить проект
+### Running the Visualiser
 
-Запустить волновой алгоритм:
-```commandline
-make run_wave
+- **Wave algorithm**:
+
+```bash
+make run-wave
 ```
 
-Запустить алгоритм A*:
-```commandline
-make run_astar
+- **A\* algorithm**:
+
+```bash
+make run-a-star
 ```
 
-### Проверка стиля кода
+## Code Style & Quality
 
-Для проверки стиля кода необходимо установить необходимые зависимости и запустить соответствующий скрипт:
+Install style‑checking dependencies:
 
+```bash
+make req-style
 ```
-make style_req
-make style
+
+Run all linters and type checker:
+
+```bash
+make lint
+make lint-fix  # execute linting with autoformatting
 ```
 
-### Авторы:
+## Author
 
-- [`Starkiller2000Turbo`](https://github.com/Starkiller2000Turbo)
+- [max-marek](https://github.com/max-marek)
 
-### Стек технологий использованный в проекте:
+## License
 
-#### Основная часть
-
-- [`Python`](https://www.python.org/)
-- [`Matplotlib`](https://pypi.org/project/matplotlib/)
-
-#### Стиллизация
- 
-- [`Isort`](https://pypi.org/project/isort/)
-- [`Black`](https://pypi.org/project/black/)
-- [`Flake8`](https://pypi.org/project/flake8/)
-- [`Flake8-commas`](https://pypi.org/project/flake8-commas/)
-- [`Flake8-docstrings`](https://pypi.org/project/flake8-docstrings/)
-- [`Flake8-print`](https://pypi.org/project/flake8-print/)
-- [`Flake8-pyproject`](https://pypi.org/project/flake8-pyproject/)
-- [`Flake8-quotes`](https://pypi.org/project/flake8-quotes/)
-- [`Mypy`](https://pypi.org/project/mypy/)
+This project is for educational purposes. Feel free to use and modify it under the [MIT license](LICENSE)
