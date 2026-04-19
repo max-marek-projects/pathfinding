@@ -1,0 +1,29 @@
+name: Lint and Type Check
+
+on:
+    push:
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [ "3.14" ]
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v3
+              with:
+                  version: "latest"
+                  enable-cache: true
+
+            - name: Set up Python ${{ matrix.python-version }}
+              run: uv python install ${{ matrix.python-version }}
+
+            - name: Install dependencies with style extras
+              run: uv sync --extra style
+
+            - name: Lint with Ruff, Ty and Mypy
+              run: make lint

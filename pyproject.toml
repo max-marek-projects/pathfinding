@@ -1,11 +1,55 @@
-[tool.flake8]
-exclude=['tests/', 'venv/']
-max-line-length=120
+[project]
+name = "pathfinding"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = ["matplotlib>=3.10.8"]
 
-[tool.isort]
-line_length=120
-profile='black'
+[project.optional-dependencies]
+style = ["mypy>=1.20.1", "ruff>=0.15.11", "ty>=0.0.31"]
 
-[tool.black]
-line_length=120
-skip_string_normalization=1
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+unsafe-fixes = true
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "ANN", # type annotations
+    "B",   # potential bugs
+    "S",   # potential vulnerabilities
+    "E",   # pycodestyle errors
+    "I",   # sort imports
+    "F",   # pyflakes errors
+    "COM", # commas
+    "T2",  # print
+    "DOC", # docstring content
+    "D",   # docstring
+    "UP",  # update imports and code style according to python version
+    "Q",   # quotes
+    "C9",  # complexity
+    "C4",  # comprehensions
+    "RUF", # ruff special codes
+]
+fixable = ["ALL"]
+ignore = [
+    "D413",   # blank line after last docstring section
+    "COM812", # missing trailing comma
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+disallow_untyped_defs = true
+disallow_any_explicit = true
+disallow_any_generics = true
+disallow_untyped_decorators = true
+enable_error_code = ['deprecated']

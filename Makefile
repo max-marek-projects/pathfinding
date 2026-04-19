@@ -1,19 +1,25 @@
-WORKDIR = algorythms
+WORKDIR = .
 
-style:
-	isort .
-	black .
-	flake8 .
-	mypy .
+lint:
+	uv run ruff format --check ${WORKDIR}
+	uv run ruff check ${WORKDIR}
+	uv run mypy ${WORKDIR}
+	uv run ty check ${WORKDIR}
 
-run_wave:
-	python wave_main.py
+lint-fix:
+	uv run ruff format ${WORKDIR}
+	uv run ruff check --fix ${WORKDIR}
+	uv run mypy ${WORKDIR}
+	uv run ty check ${WORKDIR}
 
-run_astar:
-	python astar_main.py
+run-wave:
+	uv run main_wave.py
+
+run-a-star:
+	uv run main_a_star.py
 
 req:
-	pip install -r requirements.txt
+	uv sync
 
-style_req:
-	pip install -r style-requirements.txt
+req-style:
+	uv sync --extra style
